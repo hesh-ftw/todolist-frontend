@@ -19,14 +19,12 @@ const initialState={
 
     switch (action.type) {
 
-
-        //if any of below actions encounted
         case REGISTER_REQUEST:
         case LOGIN_REQUEST:
         case GET_USER_REQUEST:
         case RESET_PASSWORD_REQUEST:
         case SET_NEW_PASSWORD_REQUEST:
-            return{ ...state, isLoading:true, error:null, success:null}; //return these states
+            return{ ...state, isLoading:true, error:null, success:null}; 
 
 
         case REGISTER_SUCCESS:

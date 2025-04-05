@@ -13,6 +13,7 @@ import {
      SET_NEW_PASSWORD_SUCCESS, 
      } from "./ActionType"
 import { api, API_URL } from "../../Config/api"
+import toast from "react-hot-toast"
 
 //register a new user
 export const registerUser=(reqData)=> async(dispatch)=>{
@@ -35,18 +36,20 @@ export const registerUser=(reqData)=> async(dispatch)=>{
 
         dispatch({type:REGISTER_SUCCESS,payload:data.jwt}) // if register success redux store the jwt 
         console.log("register success", data)
+        toast.success('registration success! log in with your credentials')
 
 
     } catch(error){
         dispatch({type:REGISTER_FALIURE, payload:error})
         console.log("error", error)
+        toast.error('Email Already exist! Try with a new one!')
     }
     
 }
 
 //login a new user
 export const loginUser=(reqData)=> async(dispatch)=>{
-    dispatch({type: LOGIN_REQUEST}) // tell redux that login request has started
+    dispatch({type: LOGIN_REQUEST}) 
 
     try{
         //make api req
@@ -67,9 +70,12 @@ export const loginUser=(reqData)=> async(dispatch)=>{
         
         dispatch({type:LOGIN_SUCCESS,payload:data}) 
         console.log("login success", data)
+        toast.success('Successfully logged in!')
+
 
     } catch(error){
         dispatch({type:LOGIN_FALIURE, payload:error})
+        toast.error('wrong credentials, try again!')
 
         console.log("error", error)
     }
@@ -105,10 +111,11 @@ export const getUser=(jwt)=> async(dispatch)=>{
 export const logout =()=> async(dispatch)=>{
     dispatch({type: LOGOUT}) 
     try{
-
+    
         localStorage.clear(); //remove jwt when logout
         dispatch({type:LOGOUT}) 
         console.log(" logout success ")
+        toast.success("you have logged out!");
 
     } catch(error){
         
@@ -120,6 +127,7 @@ export const logout =()=> async(dispatch)=>{
 //forgot password 
 export const forgotPassword=(email)=> async(dispatch)=>{
     dispatch({type: RESET_PASSWORD_REQUEST}) 
+
     try{
         //make api req
         const response= await api.post(`/api/public/forgot-password`,email)
@@ -128,10 +136,12 @@ export const forgotPassword=(email)=> async(dispatch)=>{
 
         dispatch({type:RESET_PASSWORD_SUCCESS, payload:data}) 
         console.log("password reset email sent!", data)
+        toast.success('password reset email has been sent! check your inbox.')
 
     } catch(error){
         dispatch({type:RESET_PASSWORD_FAILURE, payload:error})
         console.log("error sending reset email", error)
+        toast.error("Incorrect email! try again.");
     }
 }
 
@@ -148,10 +158,13 @@ export const resetPassword=(token, newPassword)=> async(dispatch)=>{
 
         dispatch({type:SET_NEW_PASSWORD_SUCCESS, payload:data}) 
         console.log("new password set successfully! ", data)
+        toast.success('Password reset success! go back to login. ')
+        
 
     } catch(error){
         dispatch({type:SET_NEW_PASSWORD_FAILURE, payload:error})
         console.log("error setting new password", error)
+        toast.error("Error setting new password ! ")
     }
     
 }
