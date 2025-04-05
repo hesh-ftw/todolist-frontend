@@ -29,10 +29,18 @@ function NavBar() {
       </Link>)}
 
       {jwt && (
+      <Link to="/highlights" className="text-xl font-bold p-2 pr-220">
+      Highlights
+      </Link>
+      )}
+    
+
+      {jwt && (
         <IconButton className="ml-auto text-2xl" onClick={handleOnClick}>
           <PersonOutlineIcon className="text-white" style={{ fontSize: "30px" }} />
         </IconButton>
       )}
+
     </nav>
   );
 }

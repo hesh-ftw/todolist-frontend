@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Button } from '@mui/material';
-import { Balance } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { store } from '../store';
 import { useNavigate } from 'react-router-dom';
 import { getUser, logout } from '../States/Authentication/Action';
 
