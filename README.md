@@ -7,7 +7,7 @@ Before setting up the project, ensure you have the following installed on your s
 
 Node.js (version 14 or higher)
 
-npm (comes bundled with Node.js)
+npm 
 
 ## Getting Started
 Follow these steps to set up and run the project locally:
