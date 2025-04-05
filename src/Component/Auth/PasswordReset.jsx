@@ -18,6 +18,11 @@ const PasswordReset = () => {
    const token = new URLSearchParams(search).get("token");
 
    const handleSubmit = (values) => {
+
+    if(!values.password){
+      alert("Please enter your password")
+      return;
+    }
        // Pass token and new password to the action
        dispatch(resetPassword(token, values.password));
    };
@@ -38,7 +43,6 @@ const PasswordReset = () => {
           width: 400,
           backgroundColor: "#111",
           padding: "30px",
-          borderRadius: "8px",
           boxShadow: "0px 4px 10px rgba(0,0,0,0.3)",
           color: "white",
           textAlign: "center",

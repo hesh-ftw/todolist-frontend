@@ -13,14 +13,21 @@ const RegisterForm = () => {
     role: "ROLE_USER"
   };
   const navigate= useNavigate();
- const dispatch= useDispatch()
+ const dispatch= useDispatch();
+
 
   const handleSubmit = (values) => {
+
+    if (!values.email || !values.password || !values.fullName) {
+      alert("Please fill all fields");
+      return;
+    }
+
     const userData = {
       ...values,
       role: values.role || "ROLE_USER",  // Set default role if empty
     };
-    console.log("Form signup values:", values);
+   
 
     // navigate to RegisterUser function in authentication/Action.js to send api req.
     dispatch(registerUser({userData, navigate}))

@@ -13,9 +13,15 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = (email) => {
-    dispatch(forgotPassword(email));
-    console.log('reset email--', email);
+  const handleSubmit = (value) => {
+
+    if(!value.email){
+        alert("Please enter your email")
+        return;
+      }
+    dispatch(forgotPassword({email: value.email}));
+    console.log('reset email--', value.email);
+
   };
 
   return (

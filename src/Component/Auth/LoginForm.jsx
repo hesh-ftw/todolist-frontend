@@ -15,6 +15,14 @@ const LoginForm = () => {
   const dispatch= useDispatch()
 
   const handleSubmit = (values) => {
+
+
+    if(!values.email || !values.password){
+      alert('Please fill all fields')
+      return;
+    }
+
+
     const userData = {
       ...values,
       role: values.role || "ROLE_USER",  // Set default role if empty
@@ -41,9 +49,9 @@ const LoginForm = () => {
               variant="outlined"
               margin="normal"
               type="email"
-              InputLabelProps={{ style: { color: "gray" } }} // Label color
+              InputLabelProps={{ style: { color: "gray" } }} 
               InputProps={{
-                style: { color: "white", background: "#333" }, // Input background & text color
+                style: { color: "white", background: "#333" }, 
               }}
             />
 
@@ -55,9 +63,9 @@ const LoginForm = () => {
               variant="outlined"
               margin="normal"
               type="password"
-              InputLabelProps={{ style: { color: "gray" } }} // Label color
+              InputLabelProps={{ style: { color: "gray" } }} 
               InputProps={{
-                style: { color: "white", background: "#333" }, // Input background & text color
+                style: { color: "white", background: "#333" }, 
               }}
             />
 
