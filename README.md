@@ -1,6 +1,6 @@
 
 # Todo List Frontend
-This repository contains the frontend implementation for the Todo List application, built using React, Vite and tailwind. 
+This repository contains the frontend implementation for the Todo List application, built using React Vite, Redux and tailwind. 
 
 ## Prerequisites
 Before setting up the project, ensure you have the following installed on your system:
